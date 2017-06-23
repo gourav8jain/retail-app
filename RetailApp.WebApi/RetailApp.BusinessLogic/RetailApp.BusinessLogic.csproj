@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,12 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\Product.cs" />
-    <Compile Include="Implementation\Order.cs" />
-    <Compile Include="Implementation\User.cs" />
-    <Compile Include="Interfaces\IProduct.cs" />
-    <Compile Include="Interfaces\IOrder.cs" />
-    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="Implementation\Discount\AffilateDiscount.cs" />
+    <Compile Include="Implementation\Discount\CustomerDiscount.cs" />
+    <Compile Include="Implementation\Discount\EmployeeDiscount.cs" />
+    <Compile Include="Implementation\Discount\FinalDiscount.cs" />
+    <Compile Include="Implementation\Factory\DiscountInvoker.cs" />
+    <Compile Include="Implementation\Logging\Logger.cs" />
+    <Compile Include="Implementation\Product\Product.cs" />
+    <Compile Include="Implementation\Order\Order.cs" />
+    <Compile Include="Implementation\User\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +59,9 @@
       <Project>{0236edd7-6e25-4d22-ad24-847d6ff28357}</Project>
       <Name>RetailApp.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

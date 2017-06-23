@@ -1,9 +1,16 @@
 using Microsoft.Practices.Unity;
 using RetailApp.Common;
-using RetailApp.Common.Implementation;
-using RetailApp.Common.Interfaces;
-using RetailApp.WebApi.Implementation;
 using System.Web.Http;
+using RetailApp.BusinessLogic.Implementation.Discount;
+using RetailApp.BusinessLogic.Implementation.Factory;
+using RetailApp.BusinessLogic.Implementation.Order;
+using RetailApp.BusinessLogic.Implementation.Product;
+using RetailApp.BusinessLogic.Implementation.User;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Product;
+using RetailApp.Common.Infrastructure.Common.Interfaces.User;
 using Unity.WebApi;
 
 namespace RetailApp.WebApi

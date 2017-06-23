@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailApp.WebApi", "RetailApp.WebApi\RetailApp.WebApi.csproj", "{32451B1A-A8BD-4638-A4E9-3404D3C59542}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailApp.UnitTests", "RetailApp.UnitTests\RetailApp.UnitTests.csproj", "{FA6A9157-8D75-445C-A14D-E6DEAE35E0DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailApp.Tests", "RetailApp.UnitTests\RetailApp.Tests.csproj", "{FA6A9157-8D75-445C-A14D-E6DEAE35E0DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailApp.Common", "RetailApp.Common\RetailApp.Common.csproj", "{0236EDD7-6E25-4D22-AD24-847D6FF28357}"
 EndProject
