@@ -3,6 +3,7 @@ using RetailApp.Common.Infrastructure.Common.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
 using RetailApp.Common.Infrastructure.Common.Logging;
 
 namespace RetailApp.WebApi.Controllers
@@ -22,6 +23,7 @@ namespace RetailApp.WebApi.Controllers
         }
 
         [System.Web.Http.HttpPost]
+        [RetailExceptionFilter]
         public object GetInvoice([FromBody] UserModel user)
         {
             var orders = this._user.GetOrders(user);

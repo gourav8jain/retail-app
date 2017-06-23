@@ -1,4 +1,5 @@
-﻿using RetailApp.Common;
+﻿using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common;
 using RetailApp.Common.Infrastructure.Common.Enum;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Product;
@@ -6,6 +7,7 @@ using RetailApp.Common.Infrastructure.Common.Models;
 
 namespace RetailApp.BusinessLogic.Implementation.Product
 {
+    [RetailExceptionFilter]
     public class Product : IProduct
     {
         private readonly IDiscountInvoker _discountInvoker;

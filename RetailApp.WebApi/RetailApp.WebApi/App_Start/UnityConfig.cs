@@ -11,7 +11,10 @@ using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Product;
 using RetailApp.Common.Infrastructure.Common.Interfaces.User;
+using RetailApp.Common.Infrastructure.Common.Logging;
 using Unity.WebApi;
+using log4net.Repository.Hierarchy;
+using RetailApp.BusinessLogic.Implementation.Logging;
 
 namespace RetailApp.WebApi
 {
@@ -28,6 +31,7 @@ namespace RetailApp.WebApi
             container.RegisterType<IDiscount, EmployeeDiscount>();
             container.RegisterType<IDiscount, FinalDiscount>();
             container.RegisterType<IDiscountInvoker, DiscountInvoker>();
+            container.RegisterType<ILogger, RetailLogger>();
             // register all your components with the container here
             // it is NOT necessary to register your controllers
 

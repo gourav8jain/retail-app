@@ -1,10 +1,12 @@
 ﻿using System;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
 using RetailApp.Common;
 using RetailApp.Common.Infrastructure.Common.Enum;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
 
 namespace RetailApp.BusinessLogic.Implementation.Discount
 {
+    [RetailExceptionFilter]
     public class FinalDiscount : IDiscount
     {
         public FinalDiscount()

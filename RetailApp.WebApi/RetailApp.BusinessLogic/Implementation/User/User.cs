@@ -1,4 +1,5 @@
-﻿using RetailApp.Common;
+﻿using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common;
 using RetailApp.Common.Infrastructure.Common.Enum;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
@@ -7,6 +8,7 @@ using RetailApp.Common.Infrastructure.Common.Models;
 
 namespace RetailApp.BusinessLogic.Implementation.User
 {
+    [RetailExceptionFilter]
     public class User : IUser
     {
         private readonly IOrder _order;

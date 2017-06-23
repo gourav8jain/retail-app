@@ -8,9 +8,9 @@ using RetailApp.Common.Infrastructure.Common.Logging;
 
 namespace RetailApp.BusinessLogic.Implementation.Logging
 {
-    public class Logger : ILogger
+    public class RetailLogger : ILogger
     {
-        public Logger()
+        public RetailLogger()
         {
             this.Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }

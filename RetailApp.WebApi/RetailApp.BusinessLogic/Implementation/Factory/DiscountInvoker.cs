@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using RetailApp.BusinessLogic.Implementation.Discount;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
 using RetailApp.Common;
 using RetailApp.Common.Infrastructure.Common.Enum;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
@@ -7,6 +8,7 @@ using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
 
 namespace RetailApp.BusinessLogic.Implementation.Factory
 {
+    [RetailExceptionFilter]
     public class DiscountInvoker : IDiscountInvoker
     {
         private readonly ArrayList _objArrayList = new ArrayList();
