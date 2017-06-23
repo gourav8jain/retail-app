@@ -55,10 +55,12 @@
     <Compile Include="Infrastructure\Common\Models\ProductModel.cs" />
     <Compile Include="Infrastructure\Common\Models\ProductOrderMappingModel.cs" />
     <Compile Include="Infrastructure\Common\Models\UserModel.cs" />
+    <Compile Include="Infrastructure\Common\ViewModel\UserInvoiceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
