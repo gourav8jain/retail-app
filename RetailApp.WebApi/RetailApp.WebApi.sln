@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailApp.UnitTests", "Reta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailApp.Common", "RetailApp.Common\RetailApp.Common.csproj", "{0236EDD7-6E25-4D22-AD24-847D6FF28357}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailApp.BusinessLogic", "RetailApp.BusinessLogic\RetailApp.BusinessLogic.csproj", "{1D785DEA-5FAF-4EC4-84F1-CD053B2EE559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0236EDD7-6E25-4D22-AD24-847D6FF28357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0236EDD7-6E25-4D22-AD24-847D6FF28357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0236EDD7-6E25-4D22-AD24-847D6FF28357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D785DEA-5FAF-4EC4-84F1-CD053B2EE559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D785DEA-5FAF-4EC4-84F1-CD053B2EE559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D785DEA-5FAF-4EC4-84F1-CD053B2EE559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D785DEA-5FAF-4EC4-84F1-CD053B2EE559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
