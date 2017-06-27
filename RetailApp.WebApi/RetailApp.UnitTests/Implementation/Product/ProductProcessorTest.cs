@@ -1,28 +1,58 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿// ***********************************************************************
+// Assembly         : RetailApp.UnitTests
+// Author           : gjain
+// Created          : 06-27-2017
+//
+// Last Modified By : gjain
+// Last Modified On : 06-27-2017
+// ***********************************************************************
+// <copyright file="ProductProcessorTest.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Moq;
 using NUnit.Framework;
 using RetailApp.BusinessLogic.Implementation.Discount;
 using RetailApp.Common.Infrastructure.Common.Enum;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
-using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
-using RetailApp.Common.Infrastructure.Common.Interfaces.Product;
 using RetailApp.Common.Infrastructure.Common.Models;
-using RetailApp.WebApi.Controllers;
+using System.Web.Http;
 
 namespace RetailApp.UnitTests.Implementation.Product
 {
+    /// <summary>
+    /// Class ProductProcessorTest.
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     [TestFixture]
     public class ProductProcessorTest : ApiController
     {
+        /// <summary>
+        /// The product
+        /// </summary>
         private BusinessLogic.Implementation.Product.ProductProcessor _product;
+        /// <summary>
+        /// The discount invoker mock
+        /// </summary>
         private readonly Mock<IDiscountInvoker> _discountInvokerMock = new Mock<IDiscountInvoker>();
+        /// <summary>
+        /// The discount mock
+        /// </summary>
         private readonly Mock<IDiscount> _discountMock = new Mock<IDiscount>();
+        /// <summary>
+        /// The product model
+        /// </summary>
         private ProductOrderMappingModel _productModel = new ProductOrderMappingModel();
+        /// <summary>
+        /// The order model
+        /// </summary>
         private OrderModel _orderModel = new OrderModel();
 
+        /// <summary>
+        /// Setups this instance.
+        /// </summary>
         [OneTimeSetUp]
         public void Setup()
         {
@@ -36,6 +66,9 @@ namespace RetailApp.UnitTests.Implementation.Product
             };
         }
 
+        /// <summary>
+        /// Gets the orders for employees test.
+        /// </summary>
         [TestCase]
         public void GetOrdersForEmployeesTest()
         {
@@ -48,6 +81,9 @@ namespace RetailApp.UnitTests.Implementation.Product
         }
 
 
+        /// <summary>
+        /// Gets the orders for customers test.
+        /// </summary>
         [TestCase]
         public void GetOrdersForCustomersTest()
         {
@@ -60,6 +96,9 @@ namespace RetailApp.UnitTests.Implementation.Product
         }
 
 
+        /// <summary>
+        /// Gets the orders for affilate test.
+        /// </summary>
         [TestCase]
         public void GetOrdersForAffilateTest()
         {
@@ -71,6 +110,9 @@ namespace RetailApp.UnitTests.Implementation.Product
             Assert.AreEqual(actualResult, expectedResult);
         }
 
+        /// <summary>
+        /// Gets the orders for customer more than two years test.
+        /// </summary>
         [TestCase]
         public void GetOrdersForCustomerMoreThanTwoYearsTest()
         {

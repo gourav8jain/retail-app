@@ -1,24 +1,53 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿// ***********************************************************************
+// Assembly         : RetailApp.UnitTests
+// Author           : gjain
+// Created          : 06-27-2017
+//
+// Last Modified By : gjain
+// Last Modified On : 06-27-2017
+// ***********************************************************************
+// <copyright file="OrderProcessorTest.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Moq;
 using NUnit.Framework;
-using RetailApp.BusinessLogic.Implementation.Discount;
 using RetailApp.Common.Infrastructure.Common.Enum;
-using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
-using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Product;
 using RetailApp.Common.Infrastructure.Common.Models;
+using System.Collections.Generic;
+using System.Web.Http;
 
 namespace RetailApp.UnitTests.Implementation.Order
 {
+    /// <summary>
+    /// Class OrderProcessorTest.
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     [TestFixture]
     public class OrderProcessorTest : ApiController
     {
+        /// <summary>
+        /// The order
+        /// </summary>
         private BusinessLogic.Implementation.Order.OrderProcesser _order;
+        /// <summary>
+        /// The product mock
+        /// </summary>
         private readonly Mock<IProduct> _productMock = new Mock<IProduct>();
+        /// <summary>
+        /// The product model
+        /// </summary>
         private ProductOrderMappingModel _productModel = new ProductOrderMappingModel();
+        /// <summary>
+        /// The order model
+        /// </summary>
         private OrderModel _orderModel = new OrderModel();
 
+        /// <summary>
+        /// Setups this instance.
+        /// </summary>
         [OneTimeSetUp]
         public void Setup()
         {
@@ -57,6 +86,9 @@ namespace RetailApp.UnitTests.Implementation.Order
             };
         }
 
+        /// <summary>
+        /// Gets the discounted product price for employees test.
+        /// </summary>
         [TestCase]
         public void GetDiscountedProductPriceForEmployeesTest()
         {
@@ -68,6 +100,9 @@ namespace RetailApp.UnitTests.Implementation.Order
         }
 
 
+        /// <summary>
+        /// Gets the discounted product price for customers test.
+        /// </summary>
         [TestCase]
         public void GetDiscountedProductPriceForCustomersTest()
         {
@@ -79,6 +114,9 @@ namespace RetailApp.UnitTests.Implementation.Order
         }
 
 
+        /// <summary>
+        /// Gets the discounted product price for affilate test.
+        /// </summary>
         [TestCase]
         public void GetDiscountedProductPriceForAffilateTest()
         {
@@ -89,6 +127,9 @@ namespace RetailApp.UnitTests.Implementation.Order
             Assert.AreEqual(actualResult, expectedResult);
         }
 
+        /// <summary>
+        /// Gets the discounted product price for customer more than two years test.
+        /// </summary>
         [TestCase]
         public void GetDiscountedProductPriceForCustomerMoreThanTwoYearsTest()
         {

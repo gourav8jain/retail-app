@@ -1,11 +1,30 @@
-﻿using System.Web;
+﻿// ***********************************************************************
+// Assembly         : RetailApp.WebApi
+// Author           : gjain
+// Created          : 06-22-2017
+//
+// Last Modified By : gjain
+// Last Modified On : 06-22-2017
+// ***********************************************************************
+// <copyright file="BundleConfig.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using System.Web.Optimization;
 
 namespace RetailApp.WebApi
 {
+    /// <summary>
+    /// Class BundleConfig.
+    /// </summary>
     public class BundleConfig
     {
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// Registers the bundles.
+        /// </summary>
+        /// <param name="bundles">The bundles.</param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
