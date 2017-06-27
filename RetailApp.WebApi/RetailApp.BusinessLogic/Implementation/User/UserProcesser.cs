@@ -9,12 +9,12 @@ using RetailApp.Common.Infrastructure.Common.Models;
 namespace RetailApp.BusinessLogic.Implementation.User
 {
     [RetailExceptionFilter]
-    public class User : IUser
+    public class UserProcesser : IUser
     {
         private readonly IOrder _order;
         private readonly IDiscountInvoker _discountInvoker;
 
-        public User(IOrder order, IDiscountInvoker discountInvoker)
+        public UserProcesser(IOrder order, IDiscountInvoker discountInvoker)
         {
             this._order = order;
             this._discountInvoker = discountInvoker;

@@ -9,10 +9,10 @@ using RetailApp.Common.Infrastructure.Common.Models;
 namespace RetailApp.BusinessLogic.Implementation.Order
 {
     [RetailExceptionFilter]
-    public class Order : IOrder
+    public class OrderProcesser : IOrder
     {
         private readonly IProduct _product;
-        public Order(IProduct product)
+        public OrderProcesser(IProduct product)
         {
             this._product = product;
         }

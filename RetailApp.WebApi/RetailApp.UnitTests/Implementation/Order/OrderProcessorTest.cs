@@ -12,9 +12,9 @@ using RetailApp.Common.Infrastructure.Common.Models;
 namespace RetailApp.UnitTests.Implementation.Order
 {
     [TestFixture]
-    public class OrderTest : ApiController
+    public class OrderProcessorTest : ApiController
     {
-        private BusinessLogic.Implementation.Order.Order _order;
+        private BusinessLogic.Implementation.Order.OrderProcesser _order;
         private readonly Mock<IProduct> _productMock = new Mock<IProduct>();
         private ProductOrderMappingModel _productModel = new ProductOrderMappingModel();
         private OrderModel _orderModel = new OrderModel();
@@ -61,7 +61,7 @@ namespace RetailApp.UnitTests.Implementation.Order
         public void GetDiscountedProductPriceForEmployeesTest()
         {
             _productMock.Setup(x => x.GetDiscountedProductPrice(It.IsAny<ProductOrderMappingModel>(), UserType.Employee, 1)).Returns(100);
-            _order = new BusinessLogic.Implementation.Order.Order(_productMock.Object);
+            _order = new BusinessLogic.Implementation.Order.OrderProcesser(_productMock.Object);
             double actualResult = _order.GetDiscountedOrderPrice(_orderModel, UserType.Employee, 1);
             double expectedResult = 700;
             Assert.AreEqual(actualResult, expectedResult);
@@ -72,7 +72,7 @@ namespace RetailApp.UnitTests.Implementation.Order
         public void GetDiscountedProductPriceForCustomersTest()
         {
             _productMock.Setup(x => x.GetDiscountedProductPrice(It.IsAny<ProductOrderMappingModel>(), UserType.Customer, 1)).Returns(100);
-            _order = new BusinessLogic.Implementation.Order.Order(_productMock.Object);
+            _order = new BusinessLogic.Implementation.Order.OrderProcesser(_productMock.Object);
             double actualResult = _order.GetDiscountedOrderPrice(_orderModel, UserType.Customer, 1);
             double expectedResult = 700;
             Assert.AreEqual(actualResult, expectedResult);
@@ -83,7 +83,7 @@ namespace RetailApp.UnitTests.Implementation.Order
         public void GetDiscountedProductPriceForAffilateTest()
         {
             _productMock.Setup(x => x.GetDiscountedProductPrice(It.IsAny<ProductOrderMappingModel>(), UserType.Afiliate, 1)).Returns(100);
-            _order = new BusinessLogic.Implementation.Order.Order(_productMock.Object);
+            _order = new BusinessLogic.Implementation.Order.OrderProcesser(_productMock.Object);
             double actualResult = _order.GetDiscountedOrderPrice(_orderModel, UserType.Afiliate, 1);
             double expectedResult = 700;
             Assert.AreEqual(actualResult, expectedResult);
@@ -93,7 +93,7 @@ namespace RetailApp.UnitTests.Implementation.Order
         public void GetDiscountedProductPriceForCustomerMoreThanTwoYearsTest()
         {
             _productMock.Setup(x => x.GetDiscountedProductPrice(It.IsAny<ProductOrderMappingModel>(), UserType.Customer, 3)).Returns(100);
-            _order = new BusinessLogic.Implementation.Order.Order(_productMock.Object);
+            _order = new BusinessLogic.Implementation.Order.OrderProcesser(_productMock.Object);
             double actualResult = _order.GetDiscountedOrderPrice(_orderModel, UserType.Customer, 3);
             double expectedResult = 700;
             Assert.AreEqual(actualResult, expectedResult);

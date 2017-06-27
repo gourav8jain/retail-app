@@ -15,9 +15,9 @@ using RetailApp.WebApi.Controllers;
 namespace RetailApp.UnitTests.Implementation.User
 {
     [TestFixture]
-    public class UserTest : ApiController
+    public class UserProcessorTest : ApiController
     {
-        private BusinessLogic.Implementation.User.User _user;
+        private BusinessLogic.Implementation.User.UserProcesser _user;
         private readonly Mock<IOrder> _orderMock = new Mock<IOrder>();
         private readonly Mock<IDiscountInvoker> _discountInvokerMock = new Mock<IDiscountInvoker>();
         private readonly Mock<IDiscount> _discountMock = new Mock<IDiscount>();
@@ -123,7 +123,7 @@ namespace RetailApp.UnitTests.Implementation.User
             _orderMock.Setup(x => x.GetDiscountedOrderPrice(It.IsAny<OrderModel>(), It.IsAny<UserType>(), It.IsAny<int>())).Returns(userModelMockObject.Orders[0].DiscountedPrice);
             _discountInvokerMock.Setup(x => x.GetDiscountType(UserType.Other)).Returns(new FinalDiscount());
             _discountMock.Setup(x => x.GetDiscount(It.IsAny<double>())).Returns(20);
-            _user = new BusinessLogic.Implementation.User.User(_orderMock.Object, _discountInvokerMock.Object);
+            _user = new BusinessLogic.Implementation.User.UserProcesser(_orderMock.Object, _discountInvokerMock.Object);
             double actualResult = _user.GetOrders(_userModel).Orders[0].DiscountedPrice;
             double expectedResult = 450;
             Assert.AreEqual(actualResult, expectedResult);

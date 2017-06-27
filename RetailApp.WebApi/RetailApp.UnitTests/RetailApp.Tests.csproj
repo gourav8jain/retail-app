@@ -63,9 +63,9 @@
   <ItemGroup>
     <Compile Include="Factory\DiscountInvokerTest.cs" />
     <Compile Include="Filters\Exception\RetailExceptionFilterTest.cs" />
-    <Compile Include="Implementation\Order\OrderTest.cs" />
-    <Compile Include="Implementation\Product\ProductTest.cs" />
-    <Compile Include="Implementation\User\UserTest.cs" />
+    <Compile Include="Implementation\Order\OrderProcessorTest.cs" />
+    <Compile Include="Implementation\Product\ProductProcessorTest.cs" />
+    <Compile Include="Implementation\User\UserProcessorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControllerTest.cs" />
   </ItemGroup>

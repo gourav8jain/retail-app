@@ -59,9 +59,9 @@
     <Compile Include="Implementation\Factory\DiscountInvoker.cs" />
     <Compile Include="Implementation\Filters\Exception\RetailExceptionFilter.cs" />
     <Compile Include="Implementation\Logging\Logger.cs" />
-    <Compile Include="Implementation\Product\Product.cs" />
-    <Compile Include="Implementation\Order\Order.cs" />
-    <Compile Include="Implementation\User\User.cs" />
+    <Compile Include="Implementation\Product\ProductProcessor.cs" />
+    <Compile Include="Implementation\Order\OrderProcesser.cs" />
+    <Compile Include="Implementation\User\UserProcesser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

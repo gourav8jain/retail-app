@@ -8,10 +8,10 @@ using RetailApp.Common.Infrastructure.Common.Models;
 namespace RetailApp.BusinessLogic.Implementation.Product
 {
     [RetailExceptionFilter]
-    public class Product : IProduct
+    public class ProductProcessor : IProduct
     {
         private readonly IDiscountInvoker _discountInvoker;
-        public Product(IDiscountInvoker discountInvoker)
+        public ProductProcessor(IDiscountInvoker discountInvoker)
         {
             this._discountInvoker = discountInvoker;
         }

@@ -23,9 +23,9 @@ namespace RetailApp.WebApi
         public static void RegisterComponents()
         {
             var container = new UnityContainer();
-            container.RegisterType<IProduct, Product>();
-            container.RegisterType<IUser, User>();
-            container.RegisterType<IOrder, Order>();
+            container.RegisterType<IProduct, ProductProcessor>();
+            container.RegisterType<IUser, UserProcesser>();
+            container.RegisterType<IOrder, OrderProcesser>();
             container.RegisterType<IDiscount, CustomerDiscount>();
             container.RegisterType<IDiscount, AffilateDiscount>();
             container.RegisterType<IDiscount, EmployeeDiscount>();
