@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.UnitTests\UserControllerTest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Moq;
+using NUnit.Framework;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.User;
+using RetailApp.Common.Infrastructure.Common.Models;
+using RetailApp.WebApi.Controllers;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+
+namespace RetailApp.UnitTests
+{
+    [TestFixture]
+    public class UserControllerTest : ApiController
+    {
+        private UserModel _userModel;
+        private UserController _userController;
+        private readonly Mock&lt;IUser&gt; _userMock = new Mock&lt;IUser&gt;();
+
+        [SetUp]
+        public void Setup()
+        {
+            _userModel = new UserModel
+            {
+                Id = 1,
+                Name = &quot;Gourav&quot;,
+                AssociationYears = 1,
+                Type = UserType.Employee,
+                Orders = new List&lt;OrderModel&gt;
+                {
+                    new OrderModel
+                    {
+                        Id = 1,
+                        Name = &quot;Order-1&quot;,
+                        Products = new List&lt;ProductOrderMappingModel&gt;
+                        {
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-1&quot;,
+                                Id = 1,
+                                Type = ProductType.NonGrocery,
+                                Cost = 100,
+                                Quantity = 1
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-2&quot;,
+                                Id = 2,
+                                Type = ProductType.NonGrocery,
+                                Cost = 200,
+                                Quantity = 2
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-3&quot;,
+                                Id = 3,
+                                Type = ProductType.NonGrocery,
+                                Cost = 50,
+                                Quantity = 4
+                            }
+
+                        }
+                    }
+                }
+            };
+        }
+
+        [TestCase]
+        public void GetInvoiceTest()
+        {
+            var userModelMockObject = new UserModel
+            {
+                Id = 1,
+                Name = &quot;Gourav&quot;,
+                AssociationYears = 1,
+                Type = UserType.Employee,
+                Orders = new List&lt;OrderModel&gt;
+                {
+                    new OrderModel
+                    {
+                        Id = 1,
+                        Name = &quot;Order-1&quot;,
+                        DiscountedPrice = 470,
+                        Products = new List&lt;ProductOrderMappingModel&gt;
+                        {
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-1&quot;,
+                                Id = 1,
+                                Type = ProductType.NonGrocery,
+                                Cost = 100,
+                                Quantity = 1
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-2&quot;,
+                                Id = 2,
+                                Type = ProductType.NonGrocery,
+                                Cost = 200,
+                                Quantity = 2
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-3&quot;,
+                                Id = 3,
+                                Type = ProductType.NonGrocery,
+                                Cost = 50,
+                                Quantity = 4
+                            }
+
+                        }
+                    }
+                }
+            };
+            _userMock.Setup(x =&gt; x.GetOrders(It.IsAny&lt;UserModel&gt;())).Returns(userModelMockObject);
+            _userController = new UserController(_userMock.Object);
+            double actualResult = _userController.GetInvoice(_userModel).ToList()[0].InvoiceAmount;
+            double expectedResult = 470;
+            Assert.AreEqual(actualResult, expectedResult);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,9,18,68,1],[22,9,22,10,1],[23,13,65,15,1],[66,9,66,10,1],[70,9,70,10,1],[71,13,114,15,1],[115,13,115,99,1],[116,13,116,68,1],[117,13,117,100,1],[118,13,118,41,1],[119,13,119,59,1],[120,9,120,10,1]]);
+    </script>
+  </body>
+</html>

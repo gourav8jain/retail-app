@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.UnitTests\Factory\DiscountInvokerTest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections;
+using System.Collections.Generic;
+using Moq;
+using NUnit.Framework;
+using RetailApp.BusinessLogic.Implementation.Discount;
+using RetailApp.BusinessLogic.Implementation.Factory;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
+using RetailApp.Common.Infrastructure.Common.Models;
+
+namespace RetailApp.UnitTests.Factory
+{
+    public class DiscountInvokerTest
+    {
+        private IDiscountInvoker _discountInvoker;
+        private IDiscount _actualDiscount;
+        private IDiscount _expectedDiscount;
+
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            _discountInvoker = new DiscountInvoker();
+        }
+
+        [TestCase]
+        public void GetDiscountTypeForEmployeeTest()
+        {
+            _actualDiscount = new EmployeeDiscount();
+            _expectedDiscount = _discountInvoker.GetDiscountType(UserType.Employee);
+            Assert.AreEqual(_actualDiscount.UserType, _expectedDiscount.UserType);
+        }
+
+        [TestCase]
+        public void GetDiscountTypeForCustomerTest()
+        {
+            _actualDiscount = new CustomerDiscount();
+            _expectedDiscount = _discountInvoker.GetDiscountType(UserType.Customer);
+            Assert.AreEqual(_actualDiscount.UserType, _expectedDiscount.UserType);
+        }
+
+        [TestCase]
+        public void GetDiscountTypeForAffilateTest()
+        {
+            _actualDiscount = new AffilateDiscount();
+            _expectedDiscount = _discountInvoker.GetDiscountType(UserType.Afiliate);
+            Assert.AreEqual(_actualDiscount.UserType, _expectedDiscount.UserType);
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[23,9,23,10,1],[24,13,24,54,1],[25,9,25,10,1],[29,9,29,10,1],[30,13,30,54,1],[31,13,31,85,1],[32,13,32,83,1],[33,9,33,10,1],[37,9,37,10,1],[38,13,38,54,1],[39,13,39,85,1],[40,13,40,83,1],[41,9,41,10,1],[45,9,45,10,1],[46,13,46,54,1],[47,13,47,85,1],[48,13,48,83,1],[49,9,49,10,1]]);
+    </script>
+  </body>
+</html>

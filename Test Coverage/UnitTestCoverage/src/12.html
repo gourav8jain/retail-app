@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.BusinessLogic\Implementation\Factory\DiscountInvoker.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections;
+using RetailApp.BusinessLogic.Implementation.Discount;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
+
+namespace RetailApp.BusinessLogic.Implementation.Factory
+{
+    [RetailExceptionFilter]
+    public class DiscountInvoker : IDiscountInvoker
+    {
+        private readonly ArrayList _objArrayList = new ArrayList();
+
+        public DiscountInvoker()
+        {
+            _objArrayList.Add(new CustomerDiscount());
+            _objArrayList.Add(new AffilateDiscount());
+            _objArrayList.Add(new EmployeeDiscount());
+            _objArrayList.Add(new FinalDiscount());
+        }
+
+        public IDiscount GetDiscountType(UserType userType)
+        {
+            foreach (var item in _objArrayList)
+            {
+                IDiscount discount = (IDiscount)item;
+                if (discount.UserType.Equals(userType))
+                {
+                    return discount;
+                }
+            }
+            return null;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,68,1],[16,9,16,33,1],[17,9,17,10,1],[18,13,18,55,1],[19,13,19,55,1],[20,13,20,55,1],[21,13,21,52,1],[22,9,22,10,1],[25,9,25,10,1],[26,13,26,20,1],[26,22,26,30,1],[26,31,26,33,1],[26,34,26,47,1],[27,13,27,14,1],[28,17,28,54,1],[29,17,29,56,1],[30,17,30,18,1],[31,21,31,37,1],[33,13,33,14,1],[34,13,34,25,0],[35,9,35,10,1]]);
+    </script>
+  </body>
+</html>

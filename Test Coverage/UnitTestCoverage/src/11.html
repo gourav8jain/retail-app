@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.BusinessLogic\Implementation\Filters\Exception\RetailExceptionFilter.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http.Filters;
+using RetailApp.BusinessLogic.Implementation.Logging;
+using RetailApp.Common.Infrastructure.Common.Logging;
+
+namespace RetailApp.BusinessLogic.Implementation.Filters.Exception
+{
+    [RetailExceptionFilter]
+    public class RetailExceptionFilter : ExceptionFilterAttribute
+    {
+        private readonly ILogger _logger;
+
+        public RetailExceptionFilter(): this(new RetailLogger())
+        {   
+        }
+
+        public RetailExceptionFilter(ILogger logger)
+        {
+            this._logger = logger;
+        }
+
+        public override void OnException(HttpActionExecutedContext actionExecutedContext)
+        {
+            this._logger.Log.Error(actionExecutedContext.Exception.Message);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,41,18,65,0],[19,9,19,10,0],[20,9,20,10,0],[22,9,22,53,1],[23,9,23,10,1],[24,13,24,35,1],[25,9,25,10,1],[28,9,28,10,1],[29,13,29,77,1],[30,9,30,10,1]]);
+    </script>
+  </body>
+</html>

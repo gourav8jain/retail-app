@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.UnitTests\Implementation\User\UserTest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+using Moq;
+using NUnit.Framework;
+using RetailApp.BusinessLogic.Implementation.Discount;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
+using RetailApp.Common.Infrastructure.Common.Interfaces.User;
+using RetailApp.Common.Infrastructure.Common.Models;
+using RetailApp.WebApi.Controllers;
+
+namespace RetailApp.UnitTests.Implementation.User
+{
+    [TestFixture]
+    public class UserTest : ApiController
+    {
+        private BusinessLogic.Implementation.User.User _user;
+        private readonly Mock&lt;IOrder&gt; _orderMock = new Mock&lt;IOrder&gt;();
+        private readonly Mock&lt;IDiscountInvoker&gt; _discountInvokerMock = new Mock&lt;IDiscountInvoker&gt;();
+        private readonly Mock&lt;IDiscount&gt; _discountMock = new Mock&lt;IDiscount&gt;();
+        private UserModel _userModel = new UserModel();
+        private OrderModel _orderModel = new OrderModel();
+
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            _userModel = new UserModel
+            {
+                Id = 1,
+                Name = &quot;Gourav&quot;,
+                AssociationYears = 1,
+                Type = UserType.Employee,
+                Orders = new List&lt;OrderModel&gt;
+                {
+                    new OrderModel
+                    {
+                        Id = 1,
+                        Name = &quot;Order-1&quot;,
+                        Products = new List&lt;ProductOrderMappingModel&gt;
+                        {
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-1&quot;,
+                                Id = 1,
+                                Type = ProductType.NonGrocery,
+                                Cost = 100,
+                                Quantity = 1
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-2&quot;,
+                                Id = 2,
+                                Type = ProductType.NonGrocery,
+                                Cost = 200,
+                                Quantity = 2
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-3&quot;,
+                                Id = 3,
+                                Type = ProductType.NonGrocery,
+                                Cost = 50,
+                                Quantity = 4
+                            }
+
+                        }
+                    }
+                }
+            };
+        }
+
+        [TestCase]
+        public void GetOrdersTest()
+        {
+
+            var userModelMockObject = new UserModel
+            {
+                Id = 1,
+                Name = &quot;Gourav&quot;,
+                AssociationYears = 1,
+                Type = UserType.Employee,
+                Orders = new List&lt;OrderModel&gt;
+                {
+                    new OrderModel
+                    {
+                        Id = 1,
+                        Name = &quot;Order-1&quot;,
+                        DiscountedPrice = 470,
+                        Products = new List&lt;ProductOrderMappingModel&gt;
+                        {
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-1&quot;,
+                                Id = 1,
+                                Type = ProductType.NonGrocery,
+                                Cost = 100,
+                                Quantity = 1
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-2&quot;,
+                                Id = 2,
+                                Type = ProductType.NonGrocery,
+                                Cost = 200,
+                                Quantity = 2
+                            },
+                            new ProductOrderMappingModel
+                            {
+                                Name = &quot;Item-3&quot;,
+                                Id = 3,
+                                Type = ProductType.NonGrocery,
+                                Cost = 50,
+                                Quantity = 4
+                            }
+
+                        }
+                    }
+                }
+            };
+            _orderMock.Setup(x =&gt; x.GetDiscountedOrderPrice(It.IsAny&lt;OrderModel&gt;(), It.IsAny&lt;UserType&gt;(), It.IsAny&lt;int&gt;())).Returns(userModelMockObject.Orders[0].DiscountedPrice);
+            _discountInvokerMock.Setup(x =&gt; x.GetDiscountType(UserType.Other)).Returns(new FinalDiscount());
+            _discountMock.Setup(x =&gt; x.GetDiscount(It.IsAny&lt;double&gt;())).Returns(20);
+            _user = new BusinessLogic.Implementation.User.User(_orderMock.Object, _discountInvokerMock.Object);
+            double actualResult = _user.GetOrders(_userModel).Orders[0].DiscountedPrice;
+            double expectedResult = 450;
+            Assert.AreEqual(actualResult, expectedResult);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,71,1],[22,9,22,101,1],[23,9,23,80,1],[24,9,24,56,1],[25,9,25,59,1],[29,9,29,10,1],[30,13,72,15,1],[73,9,73,10,1],[77,9,77,10,1],[79,13,122,15,1],[123,13,123,180,1],[124,13,124,109,1],[125,13,125,85,1],[126,13,126,112,1],[127,13,127,89,1],[128,13,128,41,1],[129,13,129,59,1],[130,9,130,10,1]]);
+    </script>
+  </body>
+</html>

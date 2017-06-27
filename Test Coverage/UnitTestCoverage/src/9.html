@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.BusinessLogic\Implementation\Product\Product.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Product;
+using RetailApp.Common.Infrastructure.Common.Models;
+
+namespace RetailApp.BusinessLogic.Implementation.Product
+{
+    [RetailExceptionFilter]
+    public class Product : IProduct
+    {
+        private readonly IDiscountInvoker _discountInvoker;
+        public Product(IDiscountInvoker discountInvoker)
+        {
+            this._discountInvoker = discountInvoker;
+        }
+
+        public double GetDiscountedProductPrice(ProductOrderMappingModel product, UserType userType, int associationYears)
+        {
+            bool isDiscountApplicable = this._discountInvoker.GetDiscountType(userType).IsDiscountApplicable(associationYears);
+            double discount = product.Type.Equals(ProductType.NonGrocery) &amp;&amp; isDiscountApplicable ? this._discountInvoker.GetDiscountType(userType).GetDiscount(product.Cost) : 0;
+            return product.Cost - discount;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[14,9,14,57,1],[15,9,15,10,1],[16,13,16,53,1],[17,9,17,10,1],[20,9,20,10,1],[21,13,21,128,1],[22,13,22,179,1],[23,13,23,44,1],[24,9,24,10,1]]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.Common\Infrastructure\Common\Models\OrderModel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+
+namespace RetailApp.Common.Infrastructure.Common.Models
+{
+    public class OrderModel
+    {
+        public OrderModel()
+        {
+            this.Products = new List&lt;ProductOrderMappingModel&gt;();
+        }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double DiscountedPrice { get; set; }
+        public List&lt;ProductOrderMappingModel&gt; Products { get; set; }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[7,9,7,28,1],[8,9,8,10,1],[9,13,9,66,1],[10,9,10,10,1],[12,25,12,29,1],[12,30,12,34,1],[13,30,13,34,1],[13,35,13,39,1],[14,41,14,45,1],[14,46,14,50,1],[15,58,15,62,1],[15,63,15,67,1]]);
+    </script>
+  </body>
+</html>

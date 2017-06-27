@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.BusinessLogic\Implementation\Discount\EmployeeDiscount.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
+
+namespace RetailApp.BusinessLogic.Implementation.Discount
+{
+    [RetailExceptionFilter]
+    public class EmployeeDiscount : IDiscount
+    {
+        public EmployeeDiscount()
+        {
+            this.UserType = UserType.Employee;
+        }
+        public UserType UserType { get; set; }
+
+        public double GetDiscount(double amount)
+        {
+            return ((30 * amount) / 100);
+        }
+
+        public bool IsDiscountApplicable(int associationYears)
+        {
+            return true;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[11,9,11,34,1],[12,9,12,10,1],[13,13,13,47,1],[14,9,14,10,1],[15,36,15,40,1],[15,41,15,45,1],[18,9,18,10,1],[19,13,19,42,1],[20,9,20,10,1],[23,9,23,10,1],[24,13,24,25,1],[25,9,25,10,1]]);
+    </script>
+  </body>
+</html>

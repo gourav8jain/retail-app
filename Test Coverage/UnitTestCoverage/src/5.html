@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.UnitTests\Filters\Exception\RetailExceptionFilterTest.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Web.Http.Filters;
+using NUnit.Framework;
+using RetailApp.BusinessLogic.Implementation.Discount;
+using RetailApp.BusinessLogic.Implementation.Factory;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.BusinessLogic.Implementation.Logging;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
+using RetailApp.Common.Infrastructure.Common.Logging;
+
+namespace RetailApp.UnitTests.Filters.Exception
+{
+    public class RetailExceptionFilterTest
+    {
+        private ILogger _logger;
+        private RetailExceptionFilter retailExceptionFilter;
+
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            _logger = new RetailLogger();
+            retailExceptionFilter = new RetailExceptionFilter(_logger);
+        }
+
+        [TestCase]
+        public void GetExceptionTest()
+        {
+            var httpException = new HttpActionExecutedContext {Exception = new System.Exception()};
+            retailExceptionFilter.OnException(httpException);
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,10,1],[22,13,22,42,1],[23,13,23,72,1],[24,9,24,10,1],[28,9,28,10,1],[29,13,29,100,1],[30,13,30,62,1],[31,9,31,10,1]]);
+    </script>
+  </body>
+</html>

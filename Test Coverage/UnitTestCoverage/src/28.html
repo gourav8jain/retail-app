@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.WebApi\Controllers\UserController.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Collections.Generic;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common.Infrastructure.Common.Interfaces.User;
+using RetailApp.Common.Infrastructure.Common.Models;
+using RetailApp.Common.Infrastructure.Common.ViewModel;
+using System.Linq;
+using System.Web.Http;
+
+namespace RetailApp.WebApi.Controllers
+{
+    public class UserController : ApiController
+    {
+        private readonly IUser _user;
+
+        public UserController(IUser user)
+        {
+            this._user = user;
+        }
+
+        [System.Web.Http.HttpPost]
+        [RetailExceptionFilter]
+        public IEnumerable&lt;UserInvoiceViewModel&gt; GetInvoice([FromBody] UserModel user)
+        {
+            var orders = this._user.GetOrders(user);
+            return orders.Orders.Select(x =&gt; new UserInvoiceViewModel { InvoiceId = x.Id, InvoiceName = x.Name, InvoiceAmount = x.DiscountedPrice });
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,42,1],[16,9,16,10,1],[17,13,17,31,1],[18,9,18,10,1],[23,9,23,10,1],[24,13,24,53,1],[25,13,25,46,1],[25,46,25,148,1],[25,148,25,150,1],[25,13,25,150,1],[26,9,26,10,1]]);
+    </script>
+  </body>
+</html>

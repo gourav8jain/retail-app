@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>C:\Xebia\retial-app\retail-app\RetailApp.WebApi\RetailApp.BusinessLogic\Implementation\Order\Order.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Linq;
+using RetailApp.BusinessLogic.Implementation.Filters.Exception;
+using RetailApp.Common;
+using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Product;
+using RetailApp.Common.Infrastructure.Common.Models;
+
+namespace RetailApp.BusinessLogic.Implementation.Order
+{
+    [RetailExceptionFilter]
+    public class Order : IOrder
+    {
+        private readonly IProduct _product;
+        public Order(IProduct product)
+        {
+            this._product = product;
+        }
+
+        public double GetDiscountedOrderPrice(OrderModel order, UserType userType, int associationYears)
+        {
+            foreach (var product in order.Products)
+            {
+                product.Cost = this._product.GetDiscountedProductPrice(product, userType, associationYears);
+            }
+
+            return GetTotalPrice(order);
+
+        }
+
+        private static double GetTotalPrice(OrderModel order)
+        {
+            double totalPrice = 0;
+            foreach (var item in order.Products.Where(x =&gt; x.Quantity &gt; 0))
+            {
+                totalPrice += item.Quantity * item.Cost;
+            }
+
+            return totalPrice;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,9,15,39,1],[16,9,16,10,1],[17,13,17,37,1],[18,9,18,10,1],[21,9,21,10,1],[22,13,22,20,1],[22,22,22,33,1],[22,34,22,36,1],[22,37,22,51,1],[23,13,23,14,1],[24,17,24,109,1],[25,13,25,14,1],[27,13,27,41,1],[29,9,29,10,1],[32,9,32,10,1],[33,13,33,35,1],[34,13,34,20,1],[34,22,34,30,1],[34,31,34,33,1],[34,34,34,60,1],[34,60,34,74,1],[34,74,34,75,1],[34,34,34,75,1],[35,13,35,14,1],[36,17,36,57,1],[37,13,37,14,1],[39,13,39,31,1],[40,9,40,10,1]]);
+    </script>
+  </body>
+</html>
