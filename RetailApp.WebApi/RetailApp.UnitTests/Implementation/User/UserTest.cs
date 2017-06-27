@@ -1,23 +1,30 @@
-﻿using Moq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+using Moq;
 using NUnit.Framework;
+using RetailApp.BusinessLogic.Implementation.Discount;
 using RetailApp.Common.Infrastructure.Common.Enum;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Discount;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
+using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
 using RetailApp.Common.Infrastructure.Common.Interfaces.User;
 using RetailApp.Common.Infrastructure.Common.Models;
 using RetailApp.WebApi.Controllers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
 
-namespace RetailApp.UnitTests
+namespace RetailApp.UnitTests.Implementation.User
 {
     [TestFixture]
-    public class UserControllerTest : ApiController
+    public class UserTest : ApiController
     {
-        private UserModel _userModel;
-        private UserController _userController;
-        private readonly Mock<IUser> _userMock = new Mock<IUser>();
+        private BusinessLogic.Implementation.User.User _user;
+        private readonly Mock<IOrder> _orderMock = new Mock<IOrder>();
+        private readonly Mock<IDiscountInvoker> _discountInvokerMock = new Mock<IDiscountInvoker>();
+        private readonly Mock<IDiscount> _discountMock = new Mock<IDiscount>();
+        private UserModel _userModel = new UserModel();
+        private OrderModel _orderModel = new OrderModel();
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             _userModel = new UserModel
@@ -66,8 +73,9 @@ namespace RetailApp.UnitTests
         }
 
         [TestCase]
-        public void GetInvoiceTest()
+        public void GetOrdersTest()
         {
+
             var userModelMockObject = new UserModel
             {
                 Id = 1,
@@ -112,10 +120,12 @@ namespace RetailApp.UnitTests
                     }
                 }
             };
-            _userMock.Setup(x => x.GetOrders(It.IsAny<UserModel>())).Returns(userModelMockObject);
-            _userController = new UserController(_userMock.Object);
-            double actualResult = _userController.GetInvoice(_userModel).ToList()[0].InvoiceAmount;
-            double expectedResult = 470;
+            _orderMock.Setup(x => x.GetDiscountedOrderPrice(It.IsAny<OrderModel>(), It.IsAny<UserType>(), It.IsAny<int>())).Returns(userModelMockObject.Orders[0].DiscountedPrice);
+            _discountInvokerMock.Setup(x => x.GetDiscountType(UserType.Other)).Returns(new FinalDiscount());
+            _discountMock.Setup(x => x.GetDiscount(It.IsAny<double>())).Returns(20);
+            _user = new BusinessLogic.Implementation.User.User(_orderMock.Object, _discountInvokerMock.Object);
+            double actualResult = _user.GetOrders(_userModel).Orders[0].DiscountedPrice;
+            double expectedResult = 450;
             Assert.AreEqual(actualResult, expectedResult);
         }
     }
