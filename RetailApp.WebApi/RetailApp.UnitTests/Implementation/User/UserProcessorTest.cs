@@ -51,10 +51,6 @@ namespace RetailApp.UnitTests.Implementation.User
         /// The user model
         /// </summary>
         private UserModel _userModel = new UserModel();
-        /// <summary>
-        /// The order model
-        /// </summary>
-        private OrderModel _orderModel = new OrderModel();
 
         /// <summary>
         /// Setups this instance.
@@ -113,7 +109,6 @@ namespace RetailApp.UnitTests.Implementation.User
         [TestCase]
         public void GetOrdersTest()
         {
-
             var userModelMockObject = new UserModel
             {
                 Id = 1,

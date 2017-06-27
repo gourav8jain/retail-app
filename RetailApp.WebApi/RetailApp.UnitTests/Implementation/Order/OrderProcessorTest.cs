@@ -37,10 +37,6 @@ namespace RetailApp.UnitTests.Implementation.Order
         /// </summary>
         private readonly Mock<IProduct> _productMock = new Mock<IProduct>();
         /// <summary>
-        /// The product model
-        /// </summary>
-        private ProductOrderMappingModel _productModel = new ProductOrderMappingModel();
-        /// <summary>
         /// The order model
         /// </summary>
         private OrderModel _orderModel = new OrderModel();

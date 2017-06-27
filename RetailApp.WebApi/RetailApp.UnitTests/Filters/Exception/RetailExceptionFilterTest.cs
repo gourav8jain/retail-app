@@ -31,7 +31,7 @@ namespace RetailApp.UnitTests.Filters.Exception
         /// <summary>
         /// The retail exception filter
         /// </summary>
-        private RetailExceptionFilter retailExceptionFilter;
+        private RetailExceptionFilter _retailExceptionFilter;
 
         /// <summary>
         /// Setups this instance.
@@ -40,7 +40,7 @@ namespace RetailApp.UnitTests.Filters.Exception
         public void Setup()
         {
             _logger = new RetailLogger();
-            retailExceptionFilter = new RetailExceptionFilter(_logger);
+            _retailExceptionFilter = new RetailExceptionFilter(_logger);
         }
 
         /// <summary>
@@ -50,8 +50,7 @@ namespace RetailApp.UnitTests.Filters.Exception
         public void GetExceptionTest()
         {
             var httpException = new HttpActionExecutedContext {Exception = new System.Exception()};
-            retailExceptionFilter.OnException(httpException);
+            _retailExceptionFilter.OnException(httpException);
         }
-
     }
 }

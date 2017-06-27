@@ -45,10 +45,6 @@ namespace RetailApp.UnitTests.Implementation.Product
         /// The product model
         /// </summary>
         private ProductOrderMappingModel _productModel = new ProductOrderMappingModel();
-        /// <summary>
-        /// The order model
-        /// </summary>
-        private OrderModel _orderModel = new OrderModel();
 
         /// <summary>
         /// Setups this instance.
