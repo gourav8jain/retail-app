@@ -48,7 +48,8 @@ namespace RetailApp.WebApi
             container.RegisterType<IDiscount, EmployeeDiscount>();
             container.RegisterType<IDiscount, FinalDiscount>();
             container.RegisterType<IDiscountInvoker, DiscountInvoker>();
-            container.RegisterType<ILogger, RetailLogger>();
+            // No need to create an instance with every request/call.
+            container.RegisterType<ILogger, RetailLogger>(new ContainerControlledLifetimeManager());
             // register all your components with the container here
             // it is NOT necessary to register your controllers
 
