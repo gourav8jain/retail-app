@@ -11,12 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System.Collections.Generic;
+using System.Linq;
 using RetailApp.BusinessLogic.Implementation.Filters.Exception;
 using RetailApp.Common.Infrastructure.Common.Enum;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
 using RetailApp.Common.Infrastructure.Common.Interfaces.User;
 using RetailApp.Common.Infrastructure.Common.Models;
+using RetailApp.Common.Infrastructure.Common.ViewModel;
 
 namespace RetailApp.BusinessLogic.Implementation.User
 {
@@ -52,7 +56,7 @@ namespace RetailApp.BusinessLogic.Implementation.User
         /// </summary>
         /// <param name="userModel">The user model.</param>
         /// <returns>UserModel.</returns>
-        public UserModel GetOrders(UserModel userModel)
+        public IEnumerable<UserInvoiceViewModel> GetOrders(UserModel userModel)
         {
             foreach (var order in userModel.Orders)
             {
@@ -61,7 +65,7 @@ namespace RetailApp.BusinessLogic.Implementation.User
                 order.DiscountedPrice = discountedPrice - finalDiscount;
             }
 
-            return userModel;
+            return userModel.Orders.Select(x => new UserInvoiceViewModel { InvoiceId = x.Id, InvoiceName = x.Name, InvoiceAmount = x.DiscountedPrice });
         }
     }
 }

@@ -11,7 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System.Collections.Generic;
 using RetailApp.Common.Infrastructure.Common.Models;
+using RetailApp.Common.Infrastructure.Common.ViewModel;
 
 namespace RetailApp.Common.Infrastructure.Common.Interfaces.User
 {
@@ -25,6 +28,6 @@ namespace RetailApp.Common.Infrastructure.Common.Interfaces.User
         /// </summary>
         /// <param name="userModel">The user model.</param>
         /// <returns>UserModel.</returns>
-        UserModel GetOrders(UserModel userModel);
+        IEnumerable<UserInvoiceViewModel> GetOrders(UserModel userModel);
     }
 }

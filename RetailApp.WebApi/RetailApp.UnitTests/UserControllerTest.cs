@@ -7,6 +7,7 @@ using RetailApp.WebApi.Controllers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using RetailApp.Common.Infrastructure.Common.ViewModel;
 
 namespace RetailApp.UnitTests
 {
@@ -68,51 +69,17 @@ namespace RetailApp.UnitTests
         [TestCase]
         public void GetInvoiceTest()
         {
-            var userModelMockObject = new UserModel
+            var invoiceModel = new List<UserInvoiceViewModel>
             {
-                Id = 1,
-                Name = "Gourav",
-                AssociationYears = 1,
-                Type = UserType.Employee,
-                Orders = new List<OrderModel>
+                new UserInvoiceViewModel
                 {
-                    new OrderModel
-                    {
-                        Id = 1,
-                        Name = "Order-1",
-                        DiscountedPrice = 470,
-                        Products = new List<ProductOrderMappingModel>
-                        {
-                            new ProductOrderMappingModel
-                            {
-                                Name = "Item-1",
-                                Id = 1,
-                                Type = ProductType.NonGrocery,
-                                Cost = 100,
-                                Quantity = 1
-                            },
-                            new ProductOrderMappingModel
-                            {
-                                Name = "Item-2",
-                                Id = 2,
-                                Type = ProductType.NonGrocery,
-                                Cost = 200,
-                                Quantity = 2
-                            },
-                            new ProductOrderMappingModel
-                            {
-                                Name = "Item-3",
-                                Id = 3,
-                                Type = ProductType.NonGrocery,
-                                Cost = 50,
-                                Quantity = 4
-                            }
-
-                        }
-                    }
+                    InvoiceAmount = 470,
+                    InvoiceId = 1,
+                    InvoiceName = "Order-1"
                 }
             };
-            _userMock.Setup(x => x.GetOrders(It.IsAny<UserModel>())).Returns(userModelMockObject);
+
+            _userMock.Setup(x => x.GetOrders(It.IsAny<UserModel>())).Returns(invoiceModel);
             _userController = new UserController(_userMock.Object);
             double actualResult = _userController.GetInvoice(_userModel).ToList()[0].InvoiceAmount;
             double expectedResult = 470;

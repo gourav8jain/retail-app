@@ -50,8 +50,7 @@ namespace RetailApp.WebApi.Controllers
         [RetailExceptionFilter]
         public IEnumerable<UserInvoiceViewModel> GetInvoice([FromBody] UserModel user)
         {
-            var orders = this._user.GetOrders(user);
-            return orders.Orders.Select(x => new UserInvoiceViewModel { InvoiceId = x.Id, InvoiceName = x.Name, InvoiceAmount = x.DiscountedPrice });
+            return this._user.GetOrders(user);
         }
     }
 }

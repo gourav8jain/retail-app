@@ -20,6 +20,7 @@ using RetailApp.Common.Infrastructure.Common.Interfaces.Factory;
 using RetailApp.Common.Infrastructure.Common.Interfaces.Order;
 using RetailApp.Common.Infrastructure.Common.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 namespace RetailApp.UnitTests.Implementation.User
@@ -157,7 +158,7 @@ namespace RetailApp.UnitTests.Implementation.User
             _discountInvokerMock.Setup(x => x.GetDiscountType(UserType.Other)).Returns(new FinalDiscount());
             _discountMock.Setup(x => x.GetDiscount(It.IsAny<double>())).Returns(20);
             _user = new BusinessLogic.Implementation.User.UserProcesser(_orderMock.Object, _discountInvokerMock.Object);
-            double actualResult = _user.GetOrders(_userModel).Orders[0].DiscountedPrice;
+            double actualResult = _user.GetOrders(_userModel).ToList()[0].InvoiceAmount;
             double expectedResult = 450;
             Assert.AreEqual(actualResult, expectedResult);
         }
