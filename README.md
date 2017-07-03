@@ -1,8 +1,8 @@
 # RetailApp.WebApi
 
-#### "A WebAPI to implement retail functionality"
+#### "This is a WebAPI to implement retail functionality"
 
-On this retail application, the following discounts would apply: 
+In this retail application, the following discounts would apply: 
 1. If the user is an employee of the store, he gets a 30% discount 
 2. If the user is an affiliate of the store, he gets a 10% discount 
 3. If the user has been a customer for over 2 years, he gets a 5% discount. 
