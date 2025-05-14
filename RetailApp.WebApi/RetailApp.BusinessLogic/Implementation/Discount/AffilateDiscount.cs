@@ -55,7 +55,7 @@ namespace RetailApp.BusinessLogic.Implementation.Discount
         /// <returns>System.Double.</returns>
         public double GetDiscount(double amount)
         {
-            return ((10 * amount) / 100);
+            return (10 * amount) / 100;
         }
     }
 }
